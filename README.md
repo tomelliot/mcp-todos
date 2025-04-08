@@ -15,10 +15,19 @@ The Model Context Protocol (MCP) is a standardized interface that allows AI mode
 ## Getting Started
 
 1. Open Claude config file
-2. Add
+2. Add the `todos` server to your `claude_desktop_config.json` (usually found at `~/Library/Application Support/Claude/claude_desktop_config.json` on MacOS)
 
 ```json
-
+{
+  "mcpServers": {
+    // ...
+    "todos": {
+      "command": "npx",
+      "args": ["-y", "todos-mcp"]
+    }
+    // ...
+  }
+}
 ```
 
 ## Development

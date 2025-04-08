@@ -161,6 +161,24 @@ server.addTool({
   },
 });
 
+server.addTool({
+  name: "Get-Most-Recently-Modified-Todo",
+  description: "Get the todo that was modified most recently",
+  parameters: z.object({}),
+  execute: async () => {
+    const allTodos = todos.list();
+    if (allTodos.length === 0) {
+      return "No todos found";
+    }
+
+    const mostRecent = allTodos.reduce((latest, current) =>
+      current.modified > latest.modified ? current : latest
+    );
+
+    return `Most recently modified todo:\n${mostRecent.toYAML()}`;
+  },
+});
+
 server.start({
   transportType: "stdio",
 });
