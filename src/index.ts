@@ -125,6 +125,20 @@ server.addTool({
 });
 
 server.addTool({
+  name: "List-Overdue",
+  description: "List all pending todos that are past their due date",
+  parameters: z.object({}),
+  execute: async () => {
+    const now = new Date();
+    return todos
+      .list("pending")
+      .filter((todo) => todo.due && todo.due < now)
+      .map((todo) => todo.toYAML())
+      .join("\n");
+  },
+});
+
+server.addTool({
   name: "Update-Todo",
   description: "Update a todo's description and/or due date",
   parameters: z.object({
