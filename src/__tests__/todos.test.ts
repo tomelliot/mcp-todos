@@ -109,3 +109,36 @@ describe("Todos CRUD Operations", () => {
     expect(() => todos.destroy(999)).toThrow("Cannot find a todo item with id");
   });
 });
+
+describe("Date-based Filtering", () => {
+  let todos: Todos;
+  let storage: MockStorage;
+
+  beforeEach(() => {
+    storage = new MockStorage();
+    todos = new Todos(storage);
+  });
+
+  test("completed todos don't appear in date filters", () => {
+    // Create todos due this week
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const completedTodo = todos.create("Completed todo", today);
+    const pendingTodo = todos.create("Pending todo", tomorrow);
+
+    // Mark one todo as complete
+    todos.markDone(completedTodo.id);
+
+    // Check listDueBy
+    const dueTodos = todos.listDueBy(tomorrow);
+    expect(dueTodos).toHaveLength(1);
+    expect(dueTodos[0].id).toBe(pendingTodo.id);
+
+    // Check listDueThisWeek
+    const dueThisWeek = todos.listDueThisWeek();
+    expect(dueThisWeek).toHaveLength(1);
+    expect(dueThisWeek[0].id).toBe(pendingTodo.id);
+  });
+});
