@@ -1,0 +1,6 @@
+{
+  "name": "@tomelliot/mcp-todos",
+  "version": "1.0.0",
+  "exports": "./src/index.ts",
+  "include": ["src/index.ts", "src/bin/index.ts"]
+}

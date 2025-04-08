@@ -1,0 +1,94 @@
+{
+  "name": "todos-mcp",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "npx @wong2/mcp-cli npx tsx --watch src/index.ts",
+    "build": "tsup && shx chmod +x dist/*.js",
+    "logs": "tail -f ~/.claude/filesystem/todos/logs/app.log|npx pino-pretty",
+    "test": "vitest run && tsc && jsr publish --dry-run",
+    "format": "prettier --write . && eslint --fix ."
+  },
+  "keywords": [
+    "Todo",
+    "MCP",
+    "Todo list",
+    "Todo MCP",
+    "Todos"
+  ],
+  "type": "module",
+  "author": "Tom Elliot (https://www.tomelliot.net)",
+  "homepage": "https://mcps.sh/todos",
+  "bin": {
+    "mcp-todos": "dist/index.js"
+  },
+  "license": "GPL-3.0-or-later",
+  "description": "A todo list application implementing Model Context Protocol (MCP)",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "execa": "^9.5.2",
+    "fastmcp": "^1.20.5",
+    "file-type": "^20.3.0",
+    "fuse.js": "^7.1.0",
+    "mcp-proxy": "^2.10.4",
+    "pino": "^9.6.0",
+    "strict-event-emitter-types": "^2.0.0",
+    "undici": "^7.4.0",
+    "uri-templates": "^0.2.0",
+    "yaml": "^2.7.1",
+    "yargs": "^17.7.2",
+    "yargs-parser": "^21.1.1",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomelliot/mcp-todos.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@sebbo2002/semantic-release-jsr"
+    ]
+  },
+  "devDependencies": {
+    "@sebbo2002/semantic-release-jsr": "^2.0.4",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.5",
+    "@types/uri-templates": "^0.1.34",
+    "@types/yargs": "^17.0.33",
+    "eslint": "^9.21.0",
+    "eslint-plugin-perfectionist": "^4.9.0",
+    "eventsource-client": "^1.1.3",
+    "get-port-please": "^3.1.2",
+    "jsr": "^0.13.3",
+    "pino-pretty": "^13.0.0",
+    "prettier": "^3.5.2",
+    "semantic-release": "^24.2.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.7",
+    "shx": "^0.3.4"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/bin/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "dts": true,
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true
+  }
+}
