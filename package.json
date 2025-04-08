@@ -20,7 +20,7 @@
   "author": "Tom Elliot (https://www.tomelliot.net)",
   "homepage": "https://mcps.sh/todos",
   "bin": {
-    "mcp-todos": "dist/index.js"
+    "todos-mcp": "dist/index.js"
   },
   "license": "GPL-3.0-or-later",
   "description": "A todo list application implementing Model Context Protocol (MCP)",
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomelliot/mcp-todos.git"
+    "url": "git+https://github.com/tomelliot/todos-mcp.git"
   },
   "release": {
     "branches": [

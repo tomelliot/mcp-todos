@@ -1,5 +1,5 @@
 {
-  "name": "@tomelliot/mcp-todos",
+  "name": "@tomelliot/todos-mcp",
   "version": "1.0.0",
   "exports": "./src/index.ts",
   "include": ["src/index.ts", "src/bin/index.ts"]

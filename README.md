@@ -14,6 +14,15 @@ The Model Context Protocol (MCP) is a standardized interface that allows AI mode
 
 ## Getting Started
 
+1. Open Claude config file
+2. Add
+
+```json
+
+```
+
+## Development
+
 ### Prerequisites
 
 - Node.js (v16 or higher)
@@ -24,7 +33,7 @@ The Model Context Protocol (MCP) is a standardized interface that allows AI mode
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/tomelliot/mcp-todos.git
+git clone https://github.com/tomelliot/todos-mcp.git
 cd mcp-todo-app
 ```
 
